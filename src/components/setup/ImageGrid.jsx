@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
+import AddImageDialog from "./AddImageDialog";
 
 const ImageGrid = () => {
   const [images, setImages] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const addImageButton = (
     <Button
       style={{
@@ -21,6 +27,7 @@ const ImageGrid = () => {
         placeItems: "center",
         color: "black",
       }}
+      onClick={() => handleOpen()}
     >
       <AddIcon style={{ fontSize: "2.5rem", fontWeight: 100 }} />
     </Button>
@@ -34,6 +41,7 @@ const ImageGrid = () => {
         overflow: "scroll",
       }}
     >
+      <AddImageDialog open={open} handleClose={handleClose} />
       <Typography style={{ fontSize: "1rem" }} gutterBottom>
         Image
       </Typography>

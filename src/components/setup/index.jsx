@@ -19,7 +19,10 @@ const Setup = () => {
       }}
     >
       <Grid item style={{ width: "100%" }} xs={12} md={8} lg={6}>
-        <Card elevation={3} style={{ overflow: "hidden", borderRadius: 10 }}>
+        <Card
+          elevation={3}
+          style={{ overflow: "hidden", borderRadius: ".8rem" }}
+        >
           <Grid style={{ display: "flex" }}>
             <Grid style={{ flex: 9, position: "relative", padding: 20 }}>
               <CardContent>
