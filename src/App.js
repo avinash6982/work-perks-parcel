@@ -1,5 +1,5 @@
-function App() {
-  return <h1>workperks</h1>;
-}
+import ApplicationRoutes from "./Routes";
+
+const App = () => <ApplicationRoutes />;
 
 export default App;
