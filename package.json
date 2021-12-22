@@ -1,0 +1,33 @@
+{
+  "name": "work-perks",
+  "version": "1.0.0",
+  "description": "Sample pages on for workperks on ReactJS",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avinash6982/work-perks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avinash6982/work-perks/issues"
+  },
+  "homepage": "https://github.com/avinash6982/work-perks#readme",
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.27.1",
+    "parcel": "^2.0.1",
+    "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
