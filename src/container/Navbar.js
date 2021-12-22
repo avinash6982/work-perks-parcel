@@ -1,7 +1,5 @@
 import NavbarComponent from "../components/navbar";
 
-const Navbar = () => {
-  return <NavbarComponent />;
-};
+const Navbar = () => <NavbarComponent />;
 
 export default Navbar;
