@@ -1,5 +1,11 @@
+import Navbar from "./container/Navbar";
 import ApplicationRoutes from "./Routes";
 
-const App = () => <ApplicationRoutes />;
+const App = () => (
+  <>
+    <Navbar />
+    <ApplicationRoutes />
+  </>
+);
 
 export default App;
