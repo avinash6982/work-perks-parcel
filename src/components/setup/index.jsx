@@ -49,7 +49,7 @@ const Setup = () => {
                 ></Box>
                 <ImageGrid />
               </CardContent>
-              <CardActions>
+              <CardActions style={{ padding: 20 }}>
                 <Box style={{ position: "absolute", left: 30, bottom: 30 }}>
                   <Button variant="contained">Next</Button>
                 </Box>
