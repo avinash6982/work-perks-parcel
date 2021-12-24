@@ -1,5 +1,10 @@
 import SetupComponent from "../components/setup";
+import { FilesProvider } from "../context/FileHandlerContext";
 
-const Setup = () => <SetupComponent />;
+const Setup = () => (
+  <FilesProvider>
+    <SetupComponent />
+  </FilesProvider>
+);
 
 export default Setup;

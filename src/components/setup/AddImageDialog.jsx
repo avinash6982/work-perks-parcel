@@ -9,9 +9,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import AddImageTabs from "./AddImageTabs";
+import { useFiles } from "../../context/FileHandlerContext";
 
 const AddImageDialog = ({ open, handleClose }) => {
-  const onSubmit = (data) => console.log(data);
+  const filesContext = useFiles();
+  const onSubmit = () => filesContext.updateImages();
+
   return (
     <div>
       <Backdrop
@@ -32,7 +35,7 @@ const AddImageDialog = ({ open, handleClose }) => {
                   <CloseIcon style={{ color: "black" }} />
                 </Button>
               </Box>
-              <AddImageTabs />
+              <AddImageTabs onSubmit={onSubmit} />
             </CardContent>
             <CardActions style={{ padding: 16, position: "relative" }}>
               <Grid

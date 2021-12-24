@@ -4,11 +4,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
 
 import AddImageDialog from "./AddImageDialog";
+import ImageGridItem from "./ImageGridItem";
+import { useFiles } from "../../context/FileHandlerContext";
 
 const ImageGrid = () => {
+  const filesContext = useFiles();
   const [images, setImages] = useState(null);
   const [open, setOpen] = useState(false);
 
@@ -19,27 +21,7 @@ const ImageGrid = () => {
     setOpen(false);
   };
 
-  const displayImages = (
-    <Grid item xs={6} md={4} lg={2}>
-      <Button
-        style={{
-          //   backgroundImage: `url(${image01})`,
-          backgroundSize: "cover",
-          height: "5rem",
-          width: "5rem",
-          borderRadius: 5,
-          display: "grid",
-          placeItems: "center",
-          color: "black",
-        }}
-        onClick={() => handleOpen()}
-      >
-        <AddIcon style={{ fontSize: "2.5rem", fontWeight: 100 }} />
-      </Button>
-    </Grid>
-  );
-
-  const addImageButton = (
+  const AddImageButton = () => (
     <Grid item xs={6} md={4} lg={2}>
       <Button
         style={{
@@ -57,6 +39,7 @@ const ImageGrid = () => {
       </Button>
     </Grid>
   );
+
   return (
     <Box
       style={{
@@ -67,13 +50,23 @@ const ImageGrid = () => {
         display: "block",
       }}
     >
-      <AddImageDialog open={open} handleClose={handleClose} />
+      {open && <AddImageDialog open={open} handleClose={handleClose} />}
       <Typography style={{ fontSize: "1rem" }} gutterBottom>
         Image
       </Typography>
-      <Grid container spacing={10}>
-        {images && displayImages}
-        {addImageButton}
+      <Grid
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, 6rem)",
+        }}
+        container
+        spacing={2}
+      >
+        {filesContext.files.images.length !== 0 &&
+          Object.values(filesContext.files.images).map((item) => (
+            <ImageGridItem image={item} />
+          ))}
+        <AddImageButton />
       </Grid>
     </Box>
   );
