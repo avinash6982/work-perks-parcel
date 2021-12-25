@@ -1,12 +1,14 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import { Skeleton } from "@mui/material";
+import Skeleton from "@mui/material/Skeleton";
 
+//Single image item renders skeleton elemet on loading
 const ImageGridItem = ({ image, large, onClick, selected, loading }) =>
   large ? (
     <Grid item xs={8} md={6} lg={4}>
       <Button
+        onClick={onClick}
         style={{
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
@@ -29,7 +31,6 @@ const ImageGridItem = ({ image, large, onClick, selected, loading }) =>
     </Grid>
   ) : (
     <Grid item xs={6} md={4} lg={2}>
-      {console.log(selected)}
       <Button
         onClick={onClick}
         style={{

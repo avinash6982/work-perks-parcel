@@ -5,11 +5,15 @@ import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import Grid from "@mui/material/Grid";
 
-import AddImageDialog from "./AddImageDialog";
-import ImageGridItem from "./ImageGridItem";
 import { useFiles } from "../../context/FileHandlerContext";
+import AddImageDialog from "./AddImageDialog";
+import ImageGridItem from "../../common/components/ImageGridItem";
 
+import { IMAGE_GRID_TITLE } from "./Constants";
+
+//Contains image grid and add image button
 const ImageGrid = () => {
+  //Consumes filesContext
   const filesContext = useFiles();
   const [open, setOpen] = useState(false);
 
@@ -51,7 +55,7 @@ const ImageGrid = () => {
     >
       {open && <AddImageDialog open={open} handleClose={handleClose} />}
       <Typography style={{ fontSize: "1rem" }} gutterBottom>
-        Image
+        {IMAGE_GRID_TITLE}
       </Typography>
       <Grid
         style={{

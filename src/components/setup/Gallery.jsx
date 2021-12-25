@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Box from "@mui/material/Box";
-import { Grid, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 
-import ImageGridItem from "./ImageGridItem";
 import { useFiles } from "../../context/FileHandlerContext";
 import { mockGalleryFetch } from "../../api/mockGalleryFetch";
+import ImageGridItem from "../../common/components/ImageGridItem";
 
+import { ERR_SOMETHING } from "./Constants";
+
+//Gallery component
 const Gallery = () => {
+  //Consumes files context
   const filesContext = useFiles();
+  //Fetch galleryItems
   const fetchItems = useQuery("galleryItems", mockGalleryFetch);
   const [selected, setSelected] = useState(null);
 
+  //Sets image under selection, ready to push to images
   const makeSelection = (item, key) => {
     filesContext.setSelected(item);
     setSelected(key);
@@ -46,7 +53,7 @@ const Gallery = () => {
         ) : fetchItems.status === "loading" ? (
           <ImageGridItem loading />
         ) : (
-          <Typography gutterBottom>Something went wrong</Typography>
+          <Typography gutterBottom>{ERR_SOMETHING}</Typography>
         )}
       </Grid>
     </Box>

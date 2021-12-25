@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 const FileHandlerContext = createContext();
+
 const FilesProvider = (props) => {
   const [files, setFiles] = useState({
     images: [],

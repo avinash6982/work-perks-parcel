@@ -8,10 +8,19 @@ import CardActions from "@mui/material/CardActions";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
-import AddImageTabs from "./AddImageTabs";
-import { useFiles } from "../../context/FileHandlerContext";
 
+import { useFiles } from "../../context/FileHandlerContext";
+import AddImageTabs from "./AddImageTabs";
+
+import {
+  CANCEL_BUTTON_LABEL,
+  SELECT_BUTTON_LABEL,
+  SELECT_IMAGE_TITLE,
+} from "./Constants";
+
+//Popup component
 const AddImageDialog = ({ open, handleClose }) => {
+  //Consumes files context
   const filesContext = useFiles();
   const onSubmit = () => {
     filesContext.updateImages();
@@ -29,7 +38,7 @@ const AddImageDialog = ({ open, handleClose }) => {
             <CardContent style={{ paddingBottom: 0 }}>
               <Box style={{ position: "relative" }}>
                 <Typography style={{ fontSize: "1.5rem" }} gutterBottom>
-                  Select image
+                  {SELECT_IMAGE_TITLE}
                 </Typography>
                 <Button
                   onClick={() => handleClose()}
@@ -66,14 +75,14 @@ const AddImageDialog = ({ open, handleClose }) => {
                   }}
                   onClick={() => handleClose()}
                 >
-                  Cancel
+                  {CANCEL_BUTTON_LABEL}
                 </Button>
                 <Button
                   onClick={() => onSubmit()}
                   variant="contained"
                   color="primary"
                 >
-                  Select
+                  {SELECT_BUTTON_LABEL}
                 </Button>
               </Grid>
             </CardActions>

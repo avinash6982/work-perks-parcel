@@ -11,9 +11,12 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import AbcIcon from "@mui/icons-material/Abc";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 
+//responsive navbar component, optimized for mobile and desktop view
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -38,6 +41,8 @@ const Navbar = () => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  //items inside desktop-menu
+  const menuItems = ["Profile", "My account", "Signout"];
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -55,11 +60,47 @@ const Navbar = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {Object.keys(menuItems).map((key) => (
+        <MenuItem onClick={handleMenuClose} key={key}>
+          {menuItems[key]}
+        </MenuItem>
+      ))}
     </Menu>
   );
 
+  //items inside mobile-menu
+  const mobileMenuItems = [
+    {
+      name: "Messages",
+      component: <MailIcon />,
+      badgeContent: 5,
+      badgeColor: "error",
+      label: "show 5 new mails",
+    },
+    {
+      name: "Notifications",
+      component: <NotificationsIcon />,
+      badgeEnabled: true,
+      badgeContent: 10,
+      badgeColor: "error",
+      label: "show 10 new notifications",
+    },
+    {
+      name: "Profile",
+      component: <AccountCircle />,
+      label: "profile page",
+    },
+    {
+      name: "My account",
+      component: <SettingsIcon />,
+      label: "my account",
+    },
+    {
+      name: "Signout",
+      component: <LogoutIcon />,
+      label: "signout",
+    },
+  ];
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -77,38 +118,23 @@ const Navbar = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      {Object.keys(mobileMenuItems).map((key) => (
+        <MenuItem key={key}>
+          <IconButton
+            size="large"
+            aria-label={mobileMenuItems[key].label}
+            color="inherit"
+          >
+            <Badge
+              badgeContent={mobileMenuItems[key].badgeContent}
+              color={mobileMenuItems[key].badgeColor}
+            >
+              {mobileMenuItems[key].component}
+            </Badge>
+          </IconButton>
+          <p>{mobileMenuItems[key].name}</p>
+        </MenuItem>
+      ))}
     </Menu>
   );
 

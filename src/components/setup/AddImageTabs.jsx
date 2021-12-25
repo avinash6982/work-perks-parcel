@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import FileUpload from "./FileUpload";
 import Gallery from "./Gallery";
 
+//Renders tab panel
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -29,6 +30,7 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
+//Generates props for tabs of each index
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -36,6 +38,7 @@ function a11yProps(index) {
   };
 }
 
+//Wrapper tab navigator for gallery and file upload
 const AddImageTabs = () => {
   const [value, setValue] = useState(0);
 

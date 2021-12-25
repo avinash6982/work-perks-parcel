@@ -9,6 +9,13 @@ import Typography from "@mui/material/Typography";
 
 import ImageGrid from "./ImageGrid";
 
+import {
+  NEXT_BUTTON_LABEL,
+  SETUP_HEADING_MAIN,
+  SETUP_HEADING_SUB,
+} from "./Constants";
+
+//setupComponent, as a wrapper for ImageGrid component
 const Setup = () => {
   return (
     <Grid
@@ -27,7 +34,7 @@ const Setup = () => {
             <Grid style={{ flex: 9, position: "relative", padding: 20 }}>
               <CardContent>
                 <Typography style={{ fontSize: "1.5rem" }} gutterBottom>
-                  Setup your WorkPerk
+                  {SETUP_HEADING_MAIN}
                 </Typography>
                 <Typography
                   style={{
@@ -37,7 +44,7 @@ const Setup = () => {
                   }}
                   gutterBottom
                 >
-                  Work perks setup will only take a minute
+                  {SETUP_HEADING_SUB}
                 </Typography>
                 <Box
                   style={{
@@ -51,7 +58,7 @@ const Setup = () => {
               </CardContent>
               <CardActions style={{ padding: 20 }}>
                 <Box style={{ position: "absolute", left: 30, bottom: 30 }}>
-                  <Button variant="contained">Next</Button>
+                  <Button variant="contained">{NEXT_BUTTON_LABEL}</Button>
                 </Box>
               </CardActions>
             </Grid>

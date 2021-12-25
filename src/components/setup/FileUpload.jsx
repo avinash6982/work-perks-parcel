@@ -5,10 +5,20 @@ import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import Container from "@mui/material/Container";
-import ImageGridItem from "./ImageGridItem";
+
+import ImageGridItem from "../../common/components/ImageGridItem";
 import { useFiles } from "../../context/FileHandlerContext";
 
+import {
+  CLEAR_SELECTION,
+  DROPZONE_1,
+  DROPZONE_2,
+  DROPZONE_BUTTON_TITLE,
+} from "./Constants";
+
+//Handles file upload, dropzone
 const FileUpload = () => {
+  //Consumes files context
   const filesContext = useFiles();
   const fileInputRef = useRef(null);
 
@@ -41,7 +51,7 @@ const FileUpload = () => {
       {filesContext.files.selected ? (
         <>
           <ImageGridItem image={filesContext.files.selected} large />
-          <Button onClick={clearSelection}>clear selection</Button>
+          <Button onClick={clearSelection}>{CLEAR_SELECTION}</Button>
         </>
       ) : (
         <label
@@ -65,7 +75,7 @@ const FileUpload = () => {
                 style={{ color: "#707070" }}
                 align="center"
               >
-                DROP FILES HERE OR CLICK TO UPLOAD
+                {DROPZONE_1}
               </Typography>
             </Container>
             <Container>
@@ -74,8 +84,7 @@ const FileUpload = () => {
                 style={{ color: "#707070" }}
                 align="center"
               >
-                Drag files and folders here to upload or click here to browse
-                image from your computer
+                {DROPZONE_2}
               </Typography>
             </Container>
             <Container style={{ padding: 20 }} align="center">
@@ -94,7 +103,7 @@ const FileUpload = () => {
                 onClick={handleClick}
                 variant="contained"
               >
-                Select a photo from your computer
+                {DROPZONE_BUTTON_TITLE}
               </Button>
             </Container>
           </Box>
