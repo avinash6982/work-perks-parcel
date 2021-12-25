@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+
 import FileUpload from "./FileUpload";
+import Gallery from "./Gallery";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,7 +55,9 @@ const AddImageTabs = () => {
           <Tab label="Upload" {...a11yProps(1)} />
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0}></TabPanel>
+      <TabPanel value={value} index={0}>
+        <Gallery />
+      </TabPanel>
       <TabPanel value={value} index={1}>
         <FileUpload />
       </TabPanel>

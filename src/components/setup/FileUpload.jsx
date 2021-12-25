@@ -32,7 +32,11 @@ const FileUpload = () => {
     <Box
       onDragOver={(e) => e.preventDefault()}
       onDrop={(e) => handleDrop(e)}
-      style={{ height: "40vh", display: "grid", placeItems: "center" }}
+      style={{
+        height: "50vh",
+        display: "grid",
+        placeItems: "center",
+      }}
     >
       {filesContext.files.selected ? (
         <>
@@ -83,6 +87,7 @@ const FileUpload = () => {
                 onChange={(e) => handleFileUpload(e.target.files[0])}
                 style={{ display: "none" }}
                 type="file"
+                inputProps={{ accept: "image/*" }}
               ></Input>
               <Button
                 id="file-upload"

@@ -8,6 +8,7 @@ const FilesProvider = (props) => {
   });
 
   const updateImages = () =>
+    files.selected &&
     setFiles({
       images: [...files.images, files.selected],
     });

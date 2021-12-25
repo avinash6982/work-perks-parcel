@@ -11,7 +11,6 @@ import { useFiles } from "../../context/FileHandlerContext";
 
 const ImageGrid = () => {
   const filesContext = useFiles();
-  const [images, setImages] = useState(null);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -63,8 +62,8 @@ const ImageGrid = () => {
         spacing={2}
       >
         {filesContext.files.images.length !== 0 &&
-          Object.values(filesContext.files.images).map((item) => (
-            <ImageGridItem image={item} />
+          Object.keys(filesContext.files.images).map((key) => (
+            <ImageGridItem key={key} image={filesContext.files.images[key]} />
           ))}
         <AddImageButton />
       </Grid>

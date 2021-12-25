@@ -13,7 +13,10 @@ import { useFiles } from "../../context/FileHandlerContext";
 
 const AddImageDialog = ({ open, handleClose }) => {
   const filesContext = useFiles();
-  const onSubmit = () => filesContext.updateImages();
+  const onSubmit = () => {
+    filesContext.updateImages();
+    handleClose();
+  };
 
   return (
     <div>
@@ -23,7 +26,7 @@ const AddImageDialog = ({ open, handleClose }) => {
       >
         <Grid item style={{ width: "100%" }} xs={12} md={10} lg={8}>
           <Card sx={{ minWidth: 275, borderRadius: ".8rem" }}>
-            <CardContent>
+            <CardContent style={{ paddingBottom: 0 }}>
               <Box style={{ position: "relative" }}>
                 <Typography style={{ fontSize: "1.5rem" }} gutterBottom>
                   Select image
@@ -37,7 +40,13 @@ const AddImageDialog = ({ open, handleClose }) => {
               </Box>
               <AddImageTabs onSubmit={onSubmit} />
             </CardContent>
-            <CardActions style={{ padding: 16, position: "relative" }}>
+            <CardActions
+              style={{
+                paddingBottom: 16,
+                paddingRight: 16,
+                position: "relative",
+              }}
+            >
               <Grid
                 container
                 justifyContent="flex-end"
